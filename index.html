@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Palindrome Checker</title>
+</head>
+<body>
+  <input id="text-input" type="text">
+  <button id="check-btn">Check</button>
+  <div id="result"></div>
+  <style>
+    body {
+      background-color: #f4f4f4;
+    }
+  </style>
+  <script>
+    document.getElementById('check-btn').addEventListener('click', function() {
+      var input = document.getElementById('text-input').value;
+      if (!input) {
+        alert('Please input a value');
+        return;
+      }
+
+      var result = isPalindrome(input) ? `${input} is a palindrome` : `${input} is not a palindrome`;
+      document.getElementById('result').textContent = result;
+    });
+
+    function isPalindrome(str) {
+      var cleaned = str.replace(/[\W_]/g, '').toLowerCase();
+      return cleaned === cleaned.split('').reverse().join('');
+    }
+  </script>
+</body>
+</html>
